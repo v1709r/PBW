@@ -1,9 +1,13 @@
+// JAVASCRIPT
+
+// Define our audio and overlay elements
 const music = document.getElementById("bg-music");
 const sndBtn = document.getElementById("sound-btn");
 
 sndBtn.addEventListener("click", startCelebration);
 
 window.addEventListener("load", function () {
+  // Function to handle the starting interaction
   function startCelebration() {
     if (music.paused || music.ended) {
       music.play().catch((error) => {
@@ -17,151 +21,140 @@ window.addEventListener("load", function () {
       music.pause();
     }
   }
+
+  // Register plugin
   gsap.registerPlugin(ScrollTrigger);
 
-  // New multi-scene model:
+  // Loader
+  gsap.to("#loader", {
+    autoAlpha: 0,
+    duration: 0.5,
+    onComplete: () => {
+      // This physically removes it so it doesn't block scrolling!
+      document.getElementById("loader").style.display = "none";
+    },
+  });
+
   // --- SCENE 1: LANDING ---
-
-  gsap.to("#loader", { opacity: 0, duration: 10 }, "loader");
-
+  // Intro text animation. Appears as soon as the page loads.
   const introTl = gsap.timeline({
     scrollTrigger: {
       trigger: "#intro",
       start: "top 80%",
       end: "bottom 20%",
       toggleActions: "play none none reverse",
-      once: false,
     },
   });
   introTl
+    .from("#intro", {
+      autoAlpha: 0,
+      duration: 1.8,
+      ease: "power2.out",
+    })
     .from(
-      "#intro",
+      "#scrollMe",
       {
-        opacity: 0,
-        duration: 1.8,
+        autoAlpha: 0,
+        duration: 0.8,
         ease: "power2.out",
       },
-      "<+5=loader",
-    )
-    .from("#scrollMe", {
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.out",
-    });
+      "-=1", // What does this do?
+    );
 
-  // Create the master timeline
+  // Master timeline
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: "#animation-container",
       pin: true, // Lock the screen in place
-      start: "top top", // When the top of the container hits top of the viewport
-      end: "+=15000", // Creates 2500px of artificial scroll space for the animation
-      scrub: 1, // Smoothly links the animation progress to the scrollbar (1 sec delay for the smoothness). Can this be increase to 2 or so?
+      start: "top top",
+      end: "+=15000", // Artificial scroll space
+      scrub: 1, // Smoothly links the animation progress to the scrollbar (1 sec delay for the smoothness).
+
+      // Can this be increase to 2 or so?
     },
   });
 
-  tl
-
-    // Shrubs rise
-    .to(".shrubs", { y: -200, scale: 3, duration: 1 })
+  tl.to(".shrubs", { y: -200, scale: 3, duration: 1 }) // Shrubs rise
 
     // Fade out layer to reveal Mehndi
-    .to("#scene-landing", { opacity: 0, duration: 0.5 })
-
-    // Zoom through leaves vanishes
-    // .fromTo(
-    //   ".l1",
-    //   { scale: 1 },
-    //   { x: -100, scale: 1.1, duration: 1, opacity: 0 },
-    //   "#scene-landing",
-    // )
-    // .fromTo(
-    //   ".l2",
-    //   { scale: 1 },
-    //   { y: 500, scale: 1.1, duration: 1, opacity: 0 },
-    //   "#scene-landing",
-    // )
-    // .fromTo(
-    //   ".l3",
-    //   { scale: 1 },
-    //   { x: 200, scale: 1.1, duration: 1, opacity: 0 },
-    //   "#scene-landing",
-    // );
+    .to("#scene-landing", { autoAlpha: 0, duration: 0.5 })
 
     // Zoom through-no vanishes
     .fromTo(
       ".l1",
       { scale: 1 },
       { x: -180, scale: 1.1, duration: 1 },
-      "#scene-landing",
+      "landing",
     )
-    .fromTo(
-      ".l2",
-      { scale: 1 },
-      { y: 600, scale: 1.1, duration: 1 },
-      "#scene-landing",
-    )
+    .fromTo(".l2", { scale: 1 }, { y: 600, scale: 1.1, duration: 1 }, "landing")
     .fromTo(
       ".l3",
       { scale: 1 },
       { x: 200, scale: 1.1, duration: 1 },
-      "#scene-landing",
+      "landing",
     );
 
   // --- SCENE 2: MEHNDI ---
   tl
 
     // Sun vanish and turns into a marigold
-    .to(".sun", { opacity: 0 })
-    .to(".sunFlower", { opacity: 1 }, ".sun")
+    .to(".sun", { autoAlpha: 0 })
+    // .to(".sunFlower", { autoAlpha: 1 }, ".sun") // ?? Why not this
+    .to(".sunFlower", { autoAlpha: 1 }, "<")
 
     .fromTo(
       "#mehndiHeading",
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1 },
+      { autoAlpha: 0, scale: 0.8 },
+      { autoAlpha: 1, scale: 1 },
     )
 
     // Removing greens to add marigold
-    .to(".l1", { opacity: 0 }, "#mehndiHeading")
-    .to(".l2", { opacity: 0 }, "#mehndiHeading")
-    .to(".l3", { opacity: 0 }, "#mehndiHeading")
-
+    // .to(".l1, .l2, .l3", { autoAlpha: 0 }, "#mehndiHeading")
+    .to(".l1, .l2, .l3", { autoAlpha: 0 }, "<")
     // Moving Marigold borders in:
-    .to(".floWallLeft", { x: "10vh" }, "#mehndiHeading")
-    .to(".floWallRight", { x: "-10vh" }, "#mehndiHeading")
+    // .to(".floWallLeft", { x: "10vh" }, "#mehndiHeading")
+    // .to(".floWallRight", { x: "-10vh" }, "#mehndiHeading")
+    .to(".floWallLeft", { x: "10vh" }, "<")
+    .to(".floWallRight", { x: "-10vh" }, "<")
 
-    .fromTo(".location", { opacity: 0 }, { opacity: 1, duration: 1 })
-    .fromTo(".timings", { opacity: 0 }, { opacity: 1, duration: 1 })
+    .fromTo(".location", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 })
+    .fromTo(".timings", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 })
 
     // Moving Marigold borders to close the scene:
-    .to(".floWallLeft", { x: "35vh" }, ".timings+0.2")
-    .to(".floWallRight", { x: "-35vh" }, ".timings+0.2")
+    // .to(".floWallLeft", { x: "35vh" }, ".timings+0.2")
+    // .to(".floWallRight", { x: "-35vh" }, ".timings+0.2")
+    .to(".floWallLeft", { x: "35vh" }, "+=0.2")
+    .to(".floWallRight", { x: "-35vh" }, "<")
 
-    .to("#scene-mehndi", { opacity: 0, duration: 1 }); // Reveal Sangeet
+    .to("#scene-mehndi", { autoAlpha: 0, duration: 1 }) // Reveal Sangeet
 
-  // --- SCENE 3: SANGEET ---
+    // --- SCENE 3: SANGEET ---
+    // Driver drives across
+    // gsap.to("#carImg", {
+    //   x: "1200vw",
+    //   duration: 5,
+    //   scrollTrigger: {
+    //     trigger: "scene-sangeet",
+    //     start: "top center",
+    //     scrub: "true",
+    //   },
+    // });
+    .to("#carImg", {
+      x: "1200vw",
+      duration: 5,
+    });
 
-  // Driver drives across
-  gsap.to("#carImg", {
-    x: "1200vw",
-    duration: 5,
-    scrollTrigger: {
-      trigger: "scene-sangeet",
-      start: "top center",
-      scrub: "true",
-    },
-  });
-
+  // tl.fromTo("#sangeetDeets", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 }, "<+=3")
   tl.fromTo(
     "#sangeetDeets",
-    { opacity: 0 },
-    { opacity: 1, duration: 1 },
-    "<+=3",
+    { autoAlpha: 0 },
+    { autoAlpha: 1, duration: 1 },
+    "-=2",
   )
 
-    .to("#sangeet", { x: "80vh", scale: 15, duration: 5 }, "<+=10") // Zoom into text
+    .to("#sangeet", { x: "80vh", scale: 15, duration: 5 }) // Zoom into text
 
-    .to("#scene-sangeet", { opacity: 0, duration: 2 })
+    .to("#scene-sangeet", { autoAlpha: 0, duration: 2 })
 
     // --- SCENE 4: HALDI (The Paint Transition) ---
     // 1. Paint the screen yellow OVER the Sangeet zoom
@@ -180,7 +173,7 @@ window.addEventListener("load", function () {
     .to(
       "#paint-transition",
       {
-        opacity: 0,
+        autoAlpha: 0,
         duration: 2.5,
         ease: "power2.inOut",
       },
@@ -189,7 +182,7 @@ window.addEventListener("load", function () {
     .to(
       "#scene-haldi",
       {
-        opacity: 0,
+        autoAlpha: 0,
         // duration: 2.5, // Required! This dictates how much scrolling it takes to fade out
         ease: "power2.inOut",
       },
@@ -199,9 +192,14 @@ window.addEventListener("load", function () {
   // --- SCENE 5: BARAAT  ---
   tl.fromTo(
     "#baraatIntro",
-    { opacity: 0 },
-    { opacity: 1, duration: 0.5 },
-  ).fromTo("#scene-baraat", { opacity: 1 }, { opacity: 0, duration: 1 }, "+=2");
+    { autoAlpha: 0 },
+    { autoAlpha: 1, duration: 0.5 },
+  ).fromTo(
+    "#scene-baraat",
+    { autoAlpha: 1 },
+    { autoAlpha: 0, duration: 1 },
+    "+=2",
+  );
 
   // --- SCENE 6: TEMPLE (Your current code) ---
   // This happens at the very end of the timeline
@@ -244,7 +242,7 @@ window.addEventListener("load", function () {
       {
         scale: 3,
         y: -200,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 2.2, // Slightly longer than the swing for the doors to open smoothly
         ease: "power2.inOut",
       },
@@ -254,14 +252,14 @@ window.addEventListener("load", function () {
     // Step 2: Inner Scene (Couple and fire) starts slightly hidden/small, then scales up to meet the user
     .fromTo(
       ".couple",
-      { scale: 2.3, opacity: 0 },
-      { scale: 2.5, opacity: 1, duration: 2, ease: "power2.out" },
+      { scale: 2.3, autoAlpha: 0 },
+      { scale: 2.5, autoAlpha: 1, duration: 2, ease: "power2.out" },
       "start+=0.8", // starts slightly after the temple begins opening
     )
 
     .to(".couple", {
       scale: 20,
-      // opacity: 0,
+      // autoAlpha: 0,
       y: "100vh",
       duration: 3,
       ease: "power2.in",
@@ -269,8 +267,8 @@ window.addEventListener("load", function () {
 
     .fromTo(
       ".fire",
-      { scale: 1, opacity: 0 },
-      { scale: 0.5, opacity: 1, duration: 2, ease: "power2.out" },
+      { scale: 1, autoAlpha: 0 },
+      { scale: 0.5, autoAlpha: 1, duration: 2, ease: "power2.out" },
       "start+=2",
     )
 
@@ -279,7 +277,7 @@ window.addEventListener("load", function () {
       ".inner-scene",
       {
         scale: 15,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 5,
         ease: "power2.in",
       },
@@ -295,7 +293,7 @@ window.addEventListener("load", function () {
   //   "end",
   // );
 
-  tl.fromTo("#quoteContainer", { opacity: 0 }, { opacity: 1, duration: 2 });
+  tl.fromTo("#quoteContainer", { autoAlpha: 0 }, { autoAlpha: 1, duration: 2 });
   ScrollTrigger.refresh();
 });
 
