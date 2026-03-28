@@ -78,94 +78,95 @@ window.addEventListener("load", function () {
   )
     .fromTo(".l2", { scale: 1 }, { y: 600, scale: 1.1, duration: 1 }, "landing")
     .fromTo(".l3", { scale: 1 }, { x: 200, scale: 1.1, duration: 1 }, "landing")
-
-    // Sun vanish and turns into a marigold
     .to(".sun", { autoAlpha: 0 })
     .to(".sunFlower", { autoAlpha: 1 }, "<")
-
     .fromTo(
       "#mehndiHeading",
       { autoAlpha: 0, scale: 0.8 },
       { autoAlpha: 1, scale: 1 },
     )
-
-    // Removing greens to add marigold
     .to(".l1, .l2, .l3", { autoAlpha: 0 }, "<")
-    // Moving Marigold borders in:
     .to(".floWallLeft", { x: "10vh" }, "<")
     .to(".floWallRight", { x: "-10vh" }, "<")
-
     .fromTo(".location", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 })
     .fromTo(".timings", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1 })
-
-    // Moving Marigold borders to close the scene:
     .to(".floWallLeft", { x: "35vh" }, "+=0.2")
     .to(".floWallRight", { x: "-35vh" }, "<")
 
-    .to("#scene-mehndi", { autoAlpha: 0, duration: 1 }) // Reveal Sangeet
+    // Fade out Mehndi to reveal Mehndi Dress Code
+    .to("#scene-mehndi", { autoAlpha: 0, duration: 1 })
+    .fromTo(
+      "#dc-mehndi .dc-content",
+      { scale: 0.8, autoAlpha: 0 },
+      { scale: 1, autoAlpha: 1, duration: 1 },
+    )
+    // Fade out Mehndi DC to reveal Sangeet
+    .to("#dc-mehndi", { autoAlpha: 0, duration: 1 })
 
-    // --------------------------------------------------------------------------------------------------------------------
     // --- SCENE 3: SANGEET ---
-    .to("#carImg", {
-      x: "1200vw",
-      duration: 5,
-    });
-
-  tl.fromTo(
-    "#sangeetDeets",
-    { autoAlpha: 0 },
-    { autoAlpha: 1, duration: 1 },
-    "-=2",
-  )
-
+    .to("#carImg", { x: "1200vw", duration: 5 })
+    .fromTo(
+      "#sangeetDeets",
+      { autoAlpha: 0 },
+      { autoAlpha: 1, duration: 1 },
+      "-=2",
+    )
     .to("#sangeet", { x: "90vh", scale: 60, duration: 5 })
 
+    // Fade out Sangeet to reveal Sangeet Dress Code
     .to("#scene-sangeet", { autoAlpha: 0, duration: 2 })
+    .fromTo(
+      "#dc-sangeet .dc-content",
+      { scale: 0.8, autoAlpha: 0 },
+      { scale: 1, autoAlpha: 1, duration: 1 },
+    )
 
-    // --------------------------------------------------------------------------------------------------------------------
-    // --- SCENE 4: HALDI ---
-    // (The Paint Transition)
+    // --- SCENE 4: HALDI & PAINT TRANSITION ---
+    // Paint strokes drop down OVER the Sangeet DC screen
     .to(
       ".paint-stroke",
-      {
-        scaleY: 1,
-        duration: 1.5,
-        stagger: 0.15,
-        ease: "power2.inOut",
-      },
-      "<+=1.5",
+      { scaleY: 1, duration: 1.5, stagger: 0.15, ease: "power2.inOut" },
+      "+=1",
     )
 
+    // Instantly hide the Sangeet DC while the screen is fully painted yellow
+    .set("#dc-sangeet", { autoAlpha: 0 })
+
+    // Paint fades out to reveal Haldi
     .to(
       "#paint-transition",
-      {
-        autoAlpha: 0,
-        duration: 2.5,
-        ease: "power2.inOut",
-      },
+      { autoAlpha: 0, duration: 2.5, ease: "power2.inOut" },
       "+=0.5",
     )
+
+    // Wait a moment for the user to read Haldi, then fade it out
     .to(
       "#scene-haldi",
-      {
-        autoAlpha: 0,
-        ease: "power2.inOut",
-      },
-      "<+=0.1",
-    );
+      { autoAlpha: 0, duration: 1, ease: "power2.inOut" },
+      "+=2",
+    )
 
-  // --------------------------------------------------------------------------------------------------------------------
-  // --- SCENE 5: BARAAT  ---
-  tl.fromTo(
-    "#baraatIntro",
-    { autoAlpha: 0 },
-    { autoAlpha: 1, duration: 0.5 },
-  ).fromTo(
-    "#scene-baraat",
-    { autoAlpha: 1 },
-    { autoAlpha: 0, duration: 1 },
-    "+=2",
-  );
+    // Haldi faded out revealing Haldi Dress Code
+    .fromTo(
+      "#dc-haldi .dc-content",
+      { scale: 0.8, autoAlpha: 0 },
+      { scale: 1, autoAlpha: 1, duration: 1 },
+    )
+    // Fade out Haldi DC to reveal Baraat
+    .to("#dc-haldi", { autoAlpha: 0, duration: 1 })
+
+    // --- SCENE 5: BARAAT  ---
+    .fromTo("#baraatIntro", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 })
+
+    // Fade out Baraat to reveal Baraat Dress Code
+    .to("#scene-baraat", { autoAlpha: 0, duration: 1 }, "+=2")
+    .fromTo(
+      "#dc-baraat .dc-content",
+      { scale: 0.8, autoAlpha: 0 },
+      { scale: 1, autoAlpha: 1, duration: 1 },
+    )
+    // Fade out Baraat DC to reveal Temple
+    .to("#dc-baraat", { autoAlpha: 0, duration: 1 });
 
   // --------------------------------------------------------------------------------------------------------------------
   // --- SCENE 6: TEMPLE (Your current code) ---

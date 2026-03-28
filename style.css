@@ -535,3 +535,56 @@ body {
   background-size: contain;
   background-color: #000;
 }
+
+/* DC */
+.dc-screen {
+  position: absolute; /* Fixes the black screen bug */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform, opacity, visibility;
+}
+
+.dc-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.dc-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: #ffca28;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.dc-swatches {
+  display: flex;
+  gap: 15px;
+}
+
+.dc-swatch {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.dc-text {
+  font-family: "Lora", serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #e0e0e0;
+  max-width: 400px;
+  line-height: 1.5;
+}
