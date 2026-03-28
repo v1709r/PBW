@@ -3,21 +3,21 @@ const sndBtn = document.getElementById("sound-btn");
 
 sndBtn.addEventListener("click", startCelebration);
 
-window.addEventListener("load", function () {
-  function startCelebration() {
-    if (music.paused || music.ended) {
-      music.play().catch((error) => {
-        // This handles edge cases where the play is still blocked (e.g., in low-power mode)
-        console.log(
-          "Audio play was blocked. Waiting for a stronger interaction.",
-          error,
-        );
-      });
-    } else {
-      music.pause();
-    }
+function startCelebration() {
+  if (music.paused || music.ended) {
+    music.play().catch((error) => {
+      // This handles edge cases where the play is still blocked (e.g., in low-power mode)
+      console.log(
+        "Audio play was blocked. Waiting for a stronger interaction.",
+        error,
+      );
+    });
+  } else {
+    music.pause();
   }
+}
 
+window.addEventListener("load", function () {
   // Register plugin
   gsap.registerPlugin(ScrollTrigger);
 
