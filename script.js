@@ -27,7 +27,7 @@ gsap.registerPlugin(ScrollTrigger);
 // New multi-scene model:
 // --- SCENE 1: LANDING ---
 
-gsap.to("#loader", { opacity: 0, duration: 5 }, "loader");
+gsap.to("#loader", { opacity: 0, duration: 10 }, "loader");
 
 // Intro text animation. Appears as soon as the page loads.
 const introTl = gsap.timeline({
@@ -47,7 +47,7 @@ introTl
       duration: 1.8,
       ease: "power2.out",
     },
-    "<+2=loader",
+    "<+5=loader",
   )
   .from("#scrollMe", {
     opacity: 0,
