@@ -5,23 +5,22 @@ const music = document.getElementById("bg-music");
 const sndBtn = document.getElementById("sound-btn");
 
 sndBtn.addEventListener("click", startCelebration);
+// Function to handle the starting interaction
+function startCelebration() {
+  if (music.paused || music.ended) {
+    music.play().catch((error) => {
+      // This handles edge cases where the play is still blocked (e.g., in low-power mode)
+      console.log(
+        "Audio play was blocked. Waiting for a stronger interaction.",
+        error,
+      );
+    });
+  } else {
+    music.pause();
+  }
+}
 
 window.addEventListener("load", function () {
-  // Function to handle the starting interaction
-  function startCelebration() {
-    if (music.paused || music.ended) {
-      music.play().catch((error) => {
-        // This handles edge cases where the play is still blocked (e.g., in low-power mode)
-        console.log(
-          "Audio play was blocked. Waiting for a stronger interaction.",
-          error,
-        );
-      });
-    } else {
-      music.pause();
-    }
-  }
-
   // Register plugin
   gsap.registerPlugin(ScrollTrigger);
 
@@ -152,7 +151,7 @@ window.addEventListener("load", function () {
     "-=2",
   )
 
-    .to("#sangeet", { x: "80vh", scale: 15, duration: 5 }) // Zoom into text
+    .to("#sangeet", { x: "80vh", scale: 20, duration: 5 }) // Zoom into text
 
     .to("#scene-sangeet", { autoAlpha: 0, duration: 2 })
 
