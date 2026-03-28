@@ -151,7 +151,7 @@ window.addEventListener("load", function () {
     "-=2",
   )
 
-    .to("#sangeet", { x: "80vh", scale: 20, duration: 5 }) // Zoom into text
+    .to("#sangeet", { x: "90vh", scale: 60, duration: 5 }) // Zoom into text
 
     .to("#scene-sangeet", { autoAlpha: 0, duration: 2 })
 
@@ -298,9 +298,9 @@ window.addEventListener("load", function () {
 
 // --- WhatsApp RSVP Integration ---
 const rsvpButton = document.querySelector("#rsvpBtn");
-const groomPhoneNumber = "91993547653";
+const groomPhoneNumber = "919935947653";
 
-const rsvpMessage = `Namaste! We are so excited to confirm our attendance for Pavi and Bhavi's wedding! 🎉
+const rsvpMessage = `Namaste! We are so excited to confirm our attendance for Pavi and Bhavi's wedding!
 
 Here are our details:
 * Names of Guests: 
