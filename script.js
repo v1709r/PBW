@@ -23,6 +23,7 @@ function startCelebration() {
 window.addEventListener("load", function () {
   // Register plugin
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
   // Loader
   gsap.to("#loader", {
