@@ -1,0 +1,506 @@
+/* CSS Reset and Mobile Setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Dark to make colors pop */
+  background-color: #0a0a0a;
+  overflow-x: hidden;
+  font-family: sans-serif;
+  color: white;
+}
+
+#sound-btn {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  z-index: 100;
+  opacity: 40%;
+
+  background-color: palegoldenrod;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px 7px 12px;
+}
+
+/* Main pinned container */
+
+#animation-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+}
+/* Old:- */
+/* #animation-container {
+  background-image: url("assets/BG2path.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* Master class for every scene */
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Placeholder elements */
+
+#loader {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: #ffca28;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scene-landing {
+  background-image: url("assets/BG.png");
+}
+
+.centerText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollMe {
+  color: #000;
+  font-family: "Lora", serif;
+  font-size: 1.3rem;
+}
+
+#intro {
+  color: rgb(254, 255, 214);
+  text-shadow:
+    0 0 1.5px goldenrod,
+    0 0 7px goldenrod,
+    0 0 10px goldenrod,
+    0 0 14px goldenrod;
+  /* Change the font style later */
+  font-family: "Playfair Display", serif;
+  font-size: x-large;
+  font-weight: 100;
+  margin-top: 15vh;
+  margin-bottom: 3vh;
+}
+#boundary {
+  /* position: absolute;
+  bottom: -5vh;
+  left: 0; */
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  z-index: 4;
+}
+
+#leaf_container {
+  position: absolute;
+  top: 0;
+  left: -10;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  /* display: flex;
+  flex-direction: row; */
+  /* justify-content: space-around; */
+  /* align-items: center; */
+  z-index: 5;
+  pointer-events: none;
+}
+
+.leaves {
+  position: absolute;
+  height: 100vh;
+  width: auto;
+}
+
+/* Mehndi Scene */
+#scene-mehndi {
+  background-image: url("assets/DayResortBG.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#mehndiIntro {
+  position: absolute;
+  top: 10%;
+  left: 46%;
+}
+
+.timings {
+  font-family: "Montserrat", serif;
+  font-weight: bold;
+  text-align: center;
+  z-index: 10;
+}
+
+.location {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.sun {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(241, 241, 127));
+  box-shadow: 0 0 30px 10px rgb(241, 241, 127);
+  position: relative;
+  overflow: hidden;
+}
+
+.sunFlower {
+  position: absolute;
+  top: 0%;
+  left: -5%;
+  height: 50px;
+  width: 50px;
+  opacity: 0;
+}
+
+#mehndiHeading {
+  font-family: "Lora", serif;
+
+  position: absolute;
+  left: -140%;
+  color: orange;
+  -webkit-text-stroke: 1px rgb(255, 68, 0);
+  font-size: 3rem;
+}
+
+.floWallLeft,
+.floWallRight {
+  position: absolute;
+  height: 100vh;
+}
+
+.floWallLeft {
+  left: -45vh;
+  z-index: 11;
+}
+
+.floWallRight {
+  right: -45vh;
+  z-index: 11;
+}
+
+#mehndiDeets {
+  position: absolute;
+  bottom: 20%;
+  left: 27%;
+}
+
+/* Sangeet */
+#carImg {
+  height: 180vh;
+  position: absolute;
+  left: -350vh;
+  top: -30vh;
+}
+
+#scene-sangeet {
+  position: absolute;
+  background-image: url("assets/SangeetBG.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#sangeetIntro {
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  position: absolute;
+  left: 5%;
+  top: 10%;
+  text-align: center;
+}
+
+#sangeetThe {
+  font-family: "Lora", serif;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+#sangeet {
+  font-family: "Lora", serif;
+  font-size: 4rem;
+}
+
+/* Haldi */
+
+#scene-haldi {
+  background-image: url(assets/Haldi2.png);
+  background-size: cover;
+  background-position: -30vh;
+  background-repeat: no-repeat;
+}
+
+#paint-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  pointer-events: none; /* Ensures it never blocks user scrolling */
+}
+
+.paint-stroke {
+  flex: 1; /* Makes all 5 columns equal width */
+  background-color: #ffca28; /* Rich Haldi Yellow */
+  transform: scaleY(0); /* Hidden initially */
+  /* Adds a slight overlap to prevent hairline gaps between columns */
+  margin-right: -1px;
+}
+
+/* Alternate the direction of the paint strokes */
+.stroke-down {
+  transform-origin: top;
+}
+.stroke-up {
+  transform-origin: bottom;
+}
+
+/* Baraat */
+
+#scene-baraat {
+  background-image: url(assets/BuildingEg.png);
+  background-size: cover;
+  background-position: -115vh;
+}
+
+#baraatIntro {
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  position: absolute;
+  left: 9%;
+  bottom: 42%;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+#baraatThe {
+  font-family: "Lora", serif;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+#baraat {
+  font-weight: bold;
+  font-family: "Lora", serif;
+  font-size: 4rem;
+}
+
+#haldiIntro {
+  position: absolute;
+  top: 10%;
+  right: 0%;
+
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: 5px;
+
+  color: #0a0a0a;
+  text-align: center;
+}
+
+#haldi {
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 4rem;
+  font-style: italic;
+}
+
+/* Center wrapper for inner elements to scale them together */
+
+.inner-scene {
+  background-image: url("assets/BG2path.png");
+  background-position: center;
+  background-size: cover;
+
+  position: absolute;
+  top: 0; /* ADD THIS */
+  left: 0; /* ADD THIS */
+  width: 100%; /* ADD THIS */
+  height: 100%; /* ADD THIS */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* Behind the temple */
+}
+.couple {
+  width: 120px;
+  height: 180px;
+  position: absolute;
+  background-image: url("assets/couple2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  margin-bottom: 10px;
+}
+.fire {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  background-image: url("assets/Hawan.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* Temple wrappers */
+.temple-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5; /* Infront of couple/fire */
+  perspective: 1000px; /* Creates 3D space for the doors */
+  background-image: url("assets/OpenTemple.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.temple-left {
+  position: absolute; /* Puts the item absolute free of any constrincts */
+  bottom: 20%;
+  left: 0;
+  width: 50vw;
+  height: 25vh;
+  background-image: url("assets/LeftDoor.png");
+  background-position: right bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.temple-right {
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  height: 25vh;
+  width: 50vw;
+  background-image: url("assets/RightDoor.png");
+  background-position: left bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Next section (After animation) */
+#quoteContainer {
+  width: 100%;
+  height: 100vh;
+
+  background-image: url(assets/Sky.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#quote {
+  text-align: center;
+  font-family: "Lora", serif;
+  font-size: 2rem;
+  font-style: italic;
+  color: wheat;
+}
+
+#rsvp {
+  width: 100%;
+  min-height: 60vh;
+
+  background-color: #fdfddd;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#rscp span {
+  text-align: left;
+}
+
+#rsvp p {
+  font-size: x-small;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 1000;
+}
+
+#rsvp h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 100;
+  font-size: 2.2rem;
+}
+
+#rsvp button {
+  font-family: "Times New Roman", Times, serif;
+  padding: 40px 30px;
+  font-size: 2rem;
+  background-color: white;
+  border: none;
+  border-radius: 40%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#map img {
+  width: 100%;
+  max-width: 600px; /* Keeps it looking good on desktop too */
+  height: auto;
+}
+
+#madeBy {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-image: url(assets/DB.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #000;
+}

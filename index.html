@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>PaviKiBhavi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <audio id="bg-music" loop preload="auto">
+      <source src="assets/bgSound.mp3" type="audio/mpeg" />
+    </audio>
+
+    <button id="sound-btn">▶||</button>
+
+    <section id="animation-container">
+      <div class="scene" id="scene-landing" style="z-index: 60">
+        <div id="loader">
+          <img src="assets/loading.gif" alt="loading" />
+        </div>
+
+        <span class="centerText" id="intro">
+          <h1>Pavi ki Bhavi</h1>
+        </span>
+        <span class="centerText" id="scrollMe">
+          <p>Scroll me</p>
+          <p>↓</p>
+        </span>
+        <span>
+          <img
+            class="shrubs"
+            id="boundary"
+            src="assets/Shrubs2.png"
+            alt="page_boundary"
+          />
+        </span>
+      </div>
+
+      <div class="scene" id="scene-mehndi" style="z-index: 50">
+        <span id="leaf_container">
+          <img class="l1 leaves" src="assets/leave2.png" alt="decoLeaf" />
+          <img class="l2 leaves" src="assets/leave1.png" alt="decoLeaf" />
+          <img class="l3 leaves" src="assets/leave3.png" alt="decoLeaf" />
+        </span>
+
+        <span id="mehndiIntro">
+          <div class="sun"></div>
+          <img class="sunFlower" src="assets/Flo3.png" alt="Marigold" />
+          <div id="mehndiHeading">Mehndi</div>
+        </span>
+        <span id="mehndiBorder">
+          <img
+            class="floWallLeft"
+            src="assets/FloWallLeft.png"
+            alt="Boundaries"
+          />
+          <img
+            class="floWallRight"
+            src="assets/FloWallRight.png"
+            alt="Boundaries"
+          />
+        </span>
+        <div id="mehndiDeets">
+          <span class="timings">
+            <p>12PM ONWARDS</p>
+            <p>SUNDAY</p>
+          </span>
+          <br />
+          <span class="location">
+            <p>The Deck</p>
+            <p>Golden Tusk</p>
+          </span>
+        </div>
+      </div>
+
+      <div class="scene" id="scene-sangeet" style="z-index: 40">
+        <img id="carImg" src="assets/Car1.png" alt="carTransition" />
+        <span id="sangeetIntro">
+          <h2 id="sangeetThe">The</h2>
+          <h2 id="sangeet">SANGEET</h2>
+          <br />
+          <p id="sangeetDeets">
+            Sunday, 19th April 2026 <br />
+            Banquet, The Golden Tusk, Ramnagar 6pm Onwards
+          </p>
+        </span>
+      </div>
+
+      <div id="paint-transition" style="z-index: 45">
+        <div class="paint-stroke stroke-down"></div>
+        <div class="paint-stroke stroke-up"></div>
+        <div class="paint-stroke stroke-down"></div>
+        <div class="paint-stroke stroke-up"></div>
+        <div class="paint-stroke stroke-down"></div>
+      </div>
+
+      <div class="scene" id="scene-haldi" style="z-index: 30">
+        <span id="haldiIntro">
+          <span id="haldiDate">MONDAY, 20TH APRIL 2026</span>
+          <br /><br />
+          <span id="haldi">HALDI</span>
+          <br /><br />
+          <span id="haldiLoc">
+            POOLSIDE,THE GOLDEN TUSK, <br />
+            10AM ONWARDS
+          </span>
+        </span>
+      </div>
+
+      <div class="scene" id="scene-baraat" style="z-index: 20">
+        <span id="baraatIntro">
+          <h2 id="baraatThe">The</h2>
+          <span id="baraat">BARAAT</span>
+          <br />
+          <span id="baraatDate"><b>MONDAY, 20TH APRIL 2026</b></span>
+          <br />
+          <span id="baraatLoc"> MAIN LAWN<br />THE GOLDEN TUSK </span>
+        </span>
+      </div>
+
+      <div class="scene" id="scene-temple" style="z-index: 10">
+        <div class="inner-scene">
+          <!-- <div class="fire"></div> -->
+          <div class="couple"></div>
+        </div>
+        <div class="temple-wrapper">
+          <div class="temple-left temple-door"></div>
+          <div class="temple-right temple-door"></div>
+        </div>
+      </div>
+      <section id="quoteContainer">
+        <p id="quote">
+          "Whatever our souls are made of, his and mine are the same." – Emily
+          Brontë
+        </p>
+      </section>
+    </section>
+
+    <section id="rsvp">
+      <span>
+        <p>RSVP right here:</p>
+        <h2>Are You Coming?</h2>
+      </span>
+      <br />
+      <button id="rsvpBtn">CLICK HERE</button>
+    </section>
+
+    <section id="map">
+      <img src="assets/map2.png" alt="map" />
+    </section>
+
+    <section id="madeBy"></section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
